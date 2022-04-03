@@ -1,6 +1,3 @@
-from cgitb import text
-from ctypes import alignment
-from email.mime import base
 from tkinter import *
 from tkinter import ttk
 import tkinter
@@ -17,7 +14,7 @@ class MainFrame(ttk.Frame):
 
         super().__init__(container, *args, **kwarg)
 
-        self._is_form_valid = [False]
+        container.resizable(False, False) 
         self.label_nombre_usuario = ttk.Label(text="Nombre de Usuario: ")
         self.entry_nombre_usuario = ttk.Entry(
             validate="focusout",
@@ -69,35 +66,33 @@ class MainFrame(ttk.Frame):
 
     def build(self):
         self.grid()
-        alignment = "W"
-        self.label_nombre_usuario.grid(row=0, column=0, sticky=alignment)
-        self.entry_nombre_usuario.grid(row=0, column=1, sticky=alignment)
-        self.error_message_nombre_de_usuario.grid(row=0, column=2, sticky=alignment)
+
+        self.label_nombre_usuario.grid(row=0, column=0, sticky="e")
+        self.entry_nombre_usuario.grid(row=0, column=1, sticky="w")
+        self.error_message_nombre_de_usuario.grid(row=0, column=2, sticky="w")
         self.entry_nombre_usuario.focus_set()
 
-        self.label_nombre.grid(row=1, column=0, sticky=alignment)
-        self.entry_nombre.grid(row=1, column=1, sticky=alignment)
-        self.error_message_nombre.grid(row=1, column=2, sticky=alignment)
+        self.label_nombre.grid(row=1, column=0, sticky="e")
+        self.entry_nombre.grid(row=1, column=1, sticky="w")
+        self.error_message_nombre.grid(row=1, column=2, sticky="w")
 
-        self.label_edad.grid(row=2, column=0, sticky=alignment)
-        self.entry_edad.grid(row=2, column=1, sticky=alignment)
-        self.error_message_edad.grid(row=2, column=2, sticky=alignment)
+        self.label_edad.grid(row=2, column=0, sticky="e")
+        self.entry_edad.grid(row=2, column=1, sticky="w")
+        self.error_message_edad.grid(row=2, column=2, sticky="w")
 
-        self.label_password.grid(row=3, column=0, sticky=alignment)
-        self.entry_password.grid(row=3, column=1, sticky=alignment)
-        self.error_message_password.grid(row=3, column=2, sticky=alignment)
+        self.label_password.grid(row=3, column=0, sticky="e")
+        self.entry_password.grid(row=3, column=1, sticky="w")
+        self.error_message_password.grid(row=3, column=2, sticky="w")
         
-        self.label_repetir_password.grid(row=4, column=0, sticky=alignment)
-        self.entry_repetir_password.grid(row=4, column=1, sticky=alignment)
-        self.error_message_repetir_password.grid(row=4, column=2, sticky=alignment)
+        self.label_repetir_password.grid(row=4, column=0, sticky="e")
+        self.entry_repetir_password.grid(row=4, column=1, sticky="w")
+        self.error_message_repetir_password.grid(row=4, column=2, sticky="w")
 
-        
         self.error_message_formulario_invalido.grid()
-        self.button_borrar.grid(row=7, column=0, sticky="e")
-        self.button_guardar.grid(row=5, column=0, sticky="e")
+        self.button_borrar.grid(row=7, column=1, sticky="e")
+        self.button_guardar.grid(row=5, column=1, sticky="e")
         
-
-        self.table_usuarios.grid(row=6, column=0, sticky=alignment)
+        self.table_usuarios.grid(row=6, column=0, columnspan=2, sticky="w")
         self.table_usuarios["columns"] = (
             "nombre_usuario",
             "nombre",
